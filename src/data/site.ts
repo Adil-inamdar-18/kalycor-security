@@ -1,50 +1,341 @@
-import type { ImgKey } from './images';
-// Service descriptions are general and should be confirmed by the business before launch.
-export const SITE = { name: 'Kalycor Services', url: 'https://services.kalycor.com', phone: '+91 98765 43210', email: 'info@kalycor.com', location: 'Maharashtra, India',
-  social: [{ label: 'LinkedIn', href: '#' }, { label: 'Instagram', href: '#' }, { label: 'Facebook', href: '#' }] };
-export const BUSINESSES = [
-  { name: 'Kalycor Agriculture', href: 'https://agriculture.kalycor.com' }, { name: 'Kalycor Real Estate', href: 'https://realestate.kalycor.com' },
-  { name: 'Kalycor Import & Export', href: 'https://importexport.kalycor.com' }, { name: 'Kalycor Services', href: 'https://services.kalycor.com' },
+export const siteConfig = {
+  name: 'Kalycor Services',
+  shortName: 'Kalycor',
+  tagline: 'Security That Keeps Your Business Moving.',
+  description:
+    'Kalycor Services provides professional security personnel, CCTV and surveillance solutions, commercial security, and facility services tailored to the way your site actually operates.',
+  email: 'info@kalycorservices.com',
+  phone: '+1 (000) 000-0000',
+  address: 'Available on request',
+  nav: [
+    { label: 'Services', href: '/#services', dropdown: true },
+    { label: 'About', href: '/about' },
+    { label: 'Industries', href: '/industries' },
+    { label: 'Contact', href: '/contact' },
+  ],
+  servicesNav: [
+    { label: 'Security Services', href: '/services/security', description: 'Trained personnel and site-specific coverage' },
+    { label: 'CCTV & Camera Solutions', href: '/services/cctv', description: 'Surveillance systems and monitoring' },
+    { label: 'Commercial Services', href: '/services/commercial', description: 'Security for high-activity environments' },
+    { label: 'Facility Services', href: '/services/facility', description: 'Housekeeping, maintenance, and manpower' },
+  ],
+  social: [
+    { label: 'LinkedIn', href: '#' },
+    { label: 'X', href: '#' },
+    { label: 'Facebook', href: '#' },
+  ],
+  footerLinks: {
+    company: [
+      { label: 'About', href: '/about' },
+      { label: 'Industries', href: '/industries' },
+      { label: 'Contact', href: '/contact' },
+    ],
+    services: [
+      { label: 'Security Services', href: '/services/security' },
+      { label: 'CCTV & Camera Solutions', href: '/services/cctv' },
+      { label: 'Commercial Services', href: '/services/commercial' },
+      { label: 'Facility Services', href: '/services/facility' },
+    ],
+    industries: [
+      { label: 'Retail & Shopping Centres', href: '/industries#retail' },
+      { label: 'Commercial Buildings', href: '/industries#commercial' },
+      { label: 'Corporate Offices', href: '/industries#corporate' },
+      { label: 'Industrial Sites', href: '/industries#industrial' },
+    ],
+    legal: [
+      { label: 'Privacy Policy', href: '#' },
+      { label: 'Terms of Service', href: '#' },
+    ],
+  },
+};
+
+export type ServiceDetail = {
+  slug: string;
+  title: string;
+  shortTitle: string;
+  eyebrow: string;
+  href: string;
+  tagline: string;
+  description: string;
+  longDescription: string;
+  heroImage: string;
+  heroAlt: string;
+  featured: boolean;
+  features: { title: string; description: string }[];
+  benefits: { title: string; description: string }[];
+  process: { step: string; title: string; description: string }[];
+  supportingImage: string;
+  supportingAlt: string;
+};
+
+export const services: ServiceDetail[] = [
+  {
+    slug: 'security',
+    shortTitle: 'Security Services',
+    title: 'Security Services',
+    eyebrow: 'Personnel & Protection',
+    href: '/services/security',
+    tagline: 'Trained security personnel deployed around the way your site operates.',
+    description:
+      'Professional security officers providing site security, access control, visitor management, patrolling, incident reporting, and shift-based coverage.',
+    longDescription:
+      'Our security personnel are the visible foundation of a safer site. We deploy trained officers who understand your environment, follow site-specific protocols, and maintain a reliable presence across every shift. From access control to incident reporting, every detail is built around how your location actually works.',
+    heroImage: 'https://images.pexels.com/photos/27831371/pexels-photo-27831371.jpeg?auto=compress&cs=tinysrgb&w=1920',
+    heroAlt: 'Security officer in uniform ascending steps with professional bearing',
+    featured: true,
+    features: [
+      { title: 'Site Security', description: 'Visible on-site presence deterring unauthorized access and maintaining order.' },
+      { title: 'Access Control', description: 'Managed entry and exit points with verified visitor and contractor logging.' },
+      { title: 'Visitor Management', description: 'Structured check-in and tracking for guests, deliveries, and service personnel.' },
+      { title: 'Patrolling', description: 'Scheduled and randomized patrols covering perimeter and interior zones.' },
+      { title: 'Incident Reporting', description: 'Documented, timely reporting for any event with clear escalation paths.' },
+      { title: 'Shift-Based Coverage', description: 'Continuous coverage across day, night, and weekend shifts.' },
+    ],
+    benefits: [
+      { title: 'Reliable Presence', description: 'Consistent, professional officers on-site when you need them.' },
+      { title: 'Site-Specific Protocols', description: 'Procedures built around your site layout and risk profile.' },
+      { title: 'Clear Communication', description: 'Direct reporting lines and documented incident logs.' },
+      { title: 'Responsive Support', description: 'Rapid escalation and coordination with site management.' },
+    ],
+    process: [
+      { step: '01', title: 'Understand Your Site', description: 'We assess your location, traffic patterns, and risk areas.' },
+      { step: '02', title: 'Plan the Coverage', description: 'Shifts, patrol routes, and access points are mapped to your needs.' },
+      { step: '03', title: 'Deploy', description: 'Trained officers are placed with site-specific briefings.' },
+      { step: '04', title: 'Review & Improve', description: 'We monitor performance and adjust coverage as your site evolves.' },
+    ],
+    supportingImage: 'https://images.pexels.com/photos/29935587/pexels-photo-29935587.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    supportingAlt: 'Security guard standing near a building entrance at night',
+  },
+  {
+    slug: 'cctv',
+    shortTitle: 'CCTV & Cameras',
+    title: 'CCTV & Camera Solutions',
+    eyebrow: 'Surveillance & Monitoring',
+    href: '/services/cctv',
+    tagline: 'See more of your site. Respond faster when it matters.',
+    description:
+      'CCTV systems, camera placement, and monitoring designed to give you full site visibility and faster response.',
+    longDescription:
+      'Surveillance is about more than cameras — it is about visibility, awareness, and response. We design CCTV systems that cover the right angles, integrate with your site layout, and provide clear footage when you need it. From camera placement to monitoring, every element is built to help you see more and respond faster.',
+    heroImage: 'https://images.pexels.com/photos/5966513/pexels-photo-5966513.jpeg?auto=compress&cs=tinysrgb&w=1920',
+    heroAlt: 'Modern security camera mounted on a building for recording and protection',
+    featured: false,
+    features: [
+      { title: 'CCTV Systems', description: 'Camera selection and system design matched to your site layout and coverage needs.' },
+      { title: 'Strategic Placement', description: 'Angle and positioning planning to eliminate blind spots and maximize visibility.' },
+      { title: 'Monitoring', description: 'Live monitoring options for active surveillance and incident detection.' },
+      { title: 'Recording & Storage', description: 'Reliable recording with configurable retention and easy retrieval.' },
+      { title: 'Site Visibility', description: 'Comprehensive coverage of entrances, perimeters, and key interior zones.' },
+      { title: 'Integration', description: 'Coordination with on-site security personnel for faster ground response.' },
+    ],
+    benefits: [
+      { title: 'Full Coverage', description: 'Strategically placed cameras eliminate blind spots.' },
+      { title: 'Faster Response', description: 'Live monitoring enables quicker reaction to incidents.' },
+      { title: 'Clear Evidence', description: 'Reliable recording for investigation and review.' },
+      { title: 'Deterrent Effect', description: 'Visible cameras reduce unauthorized activity.' },
+    ],
+    process: [
+      { step: '01', title: 'Site Survey', description: 'We walk your site to identify coverage needs and blind spots.' },
+      { step: '02', title: 'System Design', description: 'Camera types, angles, and recording setup are planned.' },
+      { step: '03', title: 'Installation', description: 'Cameras and recording infrastructure are deployed and tested.' },
+      { step: '04', title: 'Monitor & Maintain', description: 'Ongoing monitoring and system checks keep coverage reliable.' },
+    ],
+    supportingImage: 'https://images.pexels.com/photos/30692441/pexels-photo-30692441.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    supportingAlt: 'Security officer in a control room analyzing surveillance screens',
+  },
+  {
+    slug: 'commercial',
+    shortTitle: 'Commercial Services',
+    title: 'Commercial Services',
+    eyebrow: 'High-Activity Environments',
+    href: '/services/commercial',
+    tagline: 'Security for high-activity commercial environments.',
+    description:
+      'Security solutions for retail, shopping centres, commercial buildings, and corporate spaces with high foot traffic.',
+    longDescription:
+      'High-activity environments demand a different approach. Retail spaces, shopping centres, and commercial buildings face unique challenges — high foot traffic, diverse visitor profiles, and constant movement. We provide security coverage that fits the rhythm of your environment, from visible presence to incident response.',
+    heroImage: 'https://images.pexels.com/photos/39962496/pexels-photo-39962496.jpeg?auto=compress&cs=tinysrgb&w=1920',
+    heroAlt: 'Vibrant shopping mall interior with escalators and retail shops',
+    featured: false,
+    features: [
+      { title: 'Retail Security', description: 'Store-level coverage for loss prevention and customer safety.' },
+      { title: 'Shopping Centre Security', description: 'Common-area patrols and coordinated response across multiple tenants.' },
+      { title: 'Commercial Building Security', description: 'Lobby access control, visitor management, and floor coverage.' },
+      { title: 'Corporate Space Security', description: 'Professional front-of-house presence and access management.' },
+      { title: 'Crowd Management', description: 'Structured approach to high-traffic periods and events.' },
+      { title: 'Loss Prevention', description: 'Proactive measures to reduce shrinkage and protect inventory.' },
+    ],
+    benefits: [
+      { title: 'Visible Deterrence', description: 'Professional presence discourages theft and disruption.' },
+      { title: 'Tenant Coordination', description: 'Unified security across multiple tenants and spaces.' },
+      { title: 'Customer Safety', description: 'A secure environment for shoppers and visitors.' },
+      { title: 'Flexible Coverage', description: 'Scaled up or down based on traffic patterns and events.' },
+    ],
+    process: [
+      { step: '01', title: 'Environment Assessment', description: 'We study your traffic patterns, tenant layout, and risk zones.' },
+      { step: '02', title: 'Coverage Plan', description: 'Personnel placement and patrol routes are designed for your space.' },
+      { step: '03', title: 'Deploy & Brief', description: 'Officers are placed with site-specific and tenant-aware briefings.' },
+      { step: '04', title: 'Review & Adapt', description: 'Coverage adjusts to seasonal traffic and evolving needs.' },
+    ],
+    supportingImage: 'https://images.pexels.com/photos/31204691/pexels-photo-31204691.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    supportingAlt: 'Bright interior of a contemporary shopping mall with glass railings',
+  },
+  {
+    slug: 'facility',
+    shortTitle: 'Facility Services',
+    title: 'Facility Services',
+    eyebrow: 'Support & Operations',
+    href: '/services/facility',
+    tagline: 'Supporting services that keep your site running cleanly and efficiently.',
+    description:
+      'Housekeeping, cleaning, maintenance coordination, front desk, and facility manpower to support your operations.',
+    longDescription:
+      'A well-managed site is more than secure — it is clean, functional, and well-maintained. Our facility services cover the essential operations that keep your environment running smoothly. From housekeeping to front desk support, we provide reliable manpower that integrates with your security infrastructure.',
+    heroImage: 'https://images.pexels.com/photos/36303748/pexels-photo-36303748.jpeg?auto=compress&cs=tinysrgb&w=1920',
+    heroAlt: 'Clean industrial hallway with a cleaning cart and supplies',
+    featured: false,
+    features: [
+      { title: 'Housekeeping', description: 'Regular cleaning and upkeep of common areas, offices, and facilities.' },
+      { title: 'Cleaning Services', description: 'Scheduled deep cleaning and specialized cleaning for different surfaces.' },
+      { title: 'Maintenance Coordination', description: 'Coordinating repairs and upkeep with building management.' },
+      { title: 'Front Desk', description: 'Professional reception and visitor coordination services.' },
+      { title: 'Facility Manpower', description: 'General support staff for day-to-day facility operations.' },
+      { title: 'Waste Management', description: 'Structured waste collection and disposal coordination.' },
+    ],
+    benefits: [
+      { title: 'Integrated Operations', description: 'Facility services that complement your security setup.' },
+      { title: 'Reliable Staffing', description: 'Consistent personnel who know your site.' },
+      { title: 'Clean Environment', description: 'Professional upkeep that reflects on your brand.' },
+      { title: 'Single Point of Contact', description: 'One team managing both security and facility support.' },
+    ],
+    process: [
+      { step: '01', title: 'Needs Assessment', description: 'We identify what your facility needs to operate smoothly.' },
+      { step: '02', title: 'Service Plan', description: 'Cleaning schedules, staffing, and coordination are mapped out.' },
+      { step: '03', title: 'Deploy Team', description: 'Trained facility staff are placed with site-specific instructions.' },
+      { step: '04', title: 'Monitor Quality', description: 'Regular checks ensure standards are maintained over time.' },
+    ],
+    supportingImage: 'https://images.pexels.com/photos/12703094/pexels-photo-12703094.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    supportingAlt: 'Spacious modern office with wooden desks and leather chairs',
+  },
 ];
-export const SERVICES: { slug: string; title: string; d: string; img: ImgKey }[] = [
-  { slug: 'security-services', title: 'Security Services', d: 'Trained security support designed around your site, people and operating requirements.', img: 'guard' },
-  { slug: 'cctv-camera-solutions', title: 'CCTV & Camera Solutions', d: 'Modern surveillance solutions that help you monitor what matters.', img: 'cctv' },
-  { slug: 'commercial-services', title: 'Commercial Services', d: 'Operational support for retail, commercial and high-footfall environments.', img: 'mall' },
-  { slug: 'facility-services', title: 'Facility Services', d: 'Practical facility support that helps your property run smoothly.', img: 'facility' },
+
+export type Industry = {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  alt: string;
+};
+
+export const industries: Industry[] = [
+  {
+    id: 'retail',
+    title: 'Retail & Shopping Centres',
+    description: 'Security for high-footfall retail environments and multi-tenant shopping centres.',
+    image: 'https://images.pexels.com/photos/34728541/pexels-photo-34728541.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    alt: 'Shopping mall interior with escalators and shoppers',
+  },
+  {
+    id: 'commercial',
+    title: 'Commercial Buildings',
+    description: 'Lobby access control, visitor management, and floor coverage for commercial properties.',
+    image: 'https://images.pexels.com/photos/1381765/pexels-photo-1381765.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    alt: 'Modern spacious indoor lobby with architectural design',
+  },
+  {
+    id: 'corporate',
+    title: 'Corporate Offices',
+    description: 'Professional front-of-house security and access management for corporate spaces.',
+    image: 'https://images.pexels.com/photos/518244/pexels-photo-518244.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    alt: 'Office reception area with receptionist at a modern desk',
+  },
+  {
+    id: 'industrial',
+    title: 'Industrial Sites',
+    description: 'Perimeter security, access control, and patrol coverage for industrial facilities.',
+    image: 'https://images.pexels.com/photos/29119504/pexels-photo-29119504.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    alt: 'Industrial buildings glowing against the dark night sky',
+  },
 ];
-export const HOW = [
-  { t: 'Understand Your Site', d: 'We walk the premises and learn how it is used, by whom and when.' },
-  { t: 'Plan the Coverage', d: 'A clear plan for people, areas and hours, agreed before we start.' },
-  { t: 'Deploy', d: 'Teams and systems put in place with a proper handover.' },
-  { t: 'Review & Improve', d: 'Regular check-ins so the service keeps pace with your site.' },
+
+export type WhyItem = {
+  number: string;
+  title: string;
+  description: string;
+};
+
+export const whyKalycor: WhyItem[] = [
+  {
+    number: '01',
+    title: 'Reliable Presence',
+    description: 'Consistent, professional personnel on-site when you need them — day, night, and weekends.',
+  },
+  {
+    number: '02',
+    title: 'Site-Specific Approach',
+    description: 'Every protocol, patrol route, and access point is built around how your site actually operates.',
+  },
+  {
+    number: '03',
+    title: 'Clear Communication',
+    description: 'Direct reporting lines, documented incident logs, and transparent coordination with your team.',
+  },
+  {
+    number: '04',
+    title: 'Responsive Support',
+    description: 'Rapid escalation and adjustment when conditions change or new risks emerge.',
+  },
 ];
-export const ENQUIRY_OPTIONS = ['Security Services', 'CCTV & Camera Solutions', 'Commercial Services', 'Facility Services', 'General Enquiry'];
-export type Step = { t: string; d: string };
-export type Layout = 'security' | 'cctv' | 'commercial' | 'facility';
-export type Page = { slug: string; title: string; kicker: string; lead: string; img: ImgKey; variant: 'hub' | 'detail' | 'industries' | 'about' | 'contact' | 'text'; layout?: Layout;
-  items: { t: string; d: string; img?: ImgKey }[]; side?: ImgKey; gallery?: ImgKey[]; introTitle?: string; intro?: string; benefits?: string[]; note?: string };
-export const PAGES: Page[] = [
-  { slug: 'about-us', title: 'About Kalycor Services', kicker: 'About us', lead: 'The services arm of the Kalycor group, helping commercial and corporate sites stay safe, secure and well managed.', img: 'about', variant: 'about', side: 'lobby', items: [{ t: 'Part of the Kalycor group', d: 'Kalycor Services sits alongside the group’s agriculture, real estate and trade businesses, with the same focus on dependable work.' }, { t: 'Built around your site', d: 'No two premises are alike. We shape coverage around how your site is actually used.' }, { t: 'Clear, accountable service', d: 'Defined responsibilities, regular reporting and one point of contact.' }] },
-  { slug: 'our-services', title: 'Our Services', kicker: 'Services', lead: 'Security, camera solutions, commercial and facility services, delivered as one coordinated offering.', img: 'tower', variant: 'hub', items: [] },
-  { slug: 'security-services', title: 'Security Services', kicker: 'Security', lead: 'A visible, reliable security presence for people, property and premises.', img: 'guard', variant: 'detail', layout: 'security', side: 'lobby', gallery: ['lobby', 'about'],
-    introTitle: 'Security that fits the way your site works', intro: 'Every site has its own rhythm of staff, visitors, deliveries and after-hours activity. We plan security personnel and procedures around that rhythm, so protection is present without getting in the way.',
-    items: [{ t: 'Site Security', d: 'Posted and patrolling personnel arranged around your site’s layout and hours.' }, { t: 'Access Control', d: 'Controlled entry points for visitors, staff, vehicles and deliveries.' }, { t: 'Visitor Management', d: 'A professional first point of contact at the door, with clear visitor records.' }, { t: 'Patrolling', d: 'Planned patrol routes and checkpoints covering the areas that matter.' }, { t: 'Incident Reporting', d: 'Clear logs and prompt reporting when something needs attention.' }, { t: 'Shift-Based Coverage', d: 'Day, night and weekend cover organised so there are no gaps.' }],
-    benefits: ['Coverage planned around your premises', 'Consistent presence on every shift', 'Clear daily logs and incident reports', 'One point of contact for your site'], note: 'Scope, staffing and hours are tailored to each site and agreed in writing.' },
-  { slug: 'cctv-camera-solutions', title: 'CCTV & Camera Solutions', kicker: 'CCTV', lead: 'Camera coverage planned around the areas that matter on your site.', img: 'cctv', variant: 'detail', layout: 'cctv', side: 'control', gallery: ['cctv', 'control', 'tower'],
-    introTitle: 'See more. Respond faster.', intro: 'Good surveillance starts with good planning. We review entrances, parking, corridors and open areas, then recommend camera coverage and monitoring that suits how your site operates.',
-    items: [{ t: 'Coverage Planning', d: 'We review entrances, parking, corridors and open areas to plan where cameras make sense.' }, { t: 'Installation Support', d: 'Camera and recording equipment installed and handed over properly.' }, { t: 'Monitoring Support', d: 'Options for how footage is viewed, reviewed and acted on.' }, { t: 'Upkeep & Review', d: 'Routine checks so your system stays in working order.' }],
-    benefits: ['Clearer visibility across your premises', 'Footage available when you need to review events', 'Systems that are checked, not forgotten', 'Coverage that works alongside on-site personnel'], note: 'Equipment and monitoring options are discussed and confirmed during site assessment.' },
-  { slug: 'commercial-services', title: 'Commercial Services', kicker: 'Commercial', lead: 'Support for large retail and commercial environments where people, footfall and operations meet.', img: 'mall', variant: 'detail', layout: 'commercial', side: 'retail', gallery: ['retail', 'tower', 'office'],
-    introTitle: 'Built for busy, high-footfall environments', intro: 'Malls, large stores and multi-tenant buildings rely on many things working together at once. We provide dependable on-the-ground support so day-to-day operations stay orderly.',
-    items: [{ t: 'Shopping Malls & Complexes', d: 'Coordinated service across common areas, entrances and parking.' }, { t: 'Large-Format Retail', d: 'Floor-level presence and entry support for busy stores.' }, { t: 'Commercial Buildings', d: 'Reliable day-to-day services for multi-tenant properties.' }, { t: 'Corporate Campuses', d: 'Consistent service across larger, multi-building sites.' }],
-    benefits: ['A steady presence in busy common areas', 'Support that adapts to peak and quiet hours', 'Consistent standards across multiple sites', 'Simple coordination through one team'] },
-  { slug: 'facility-services', title: 'Facility Services', kicker: 'Facility', lead: 'The everyday services that keep a facility clean, orderly and running well.', img: 'facility', variant: 'detail', layout: 'facility', side: 'office', gallery: ['facility', 'office', 'lobby'],
-    introTitle: 'The everyday work that keeps a property running', intro: 'A well-run facility is rarely noticed, because the small things are handled before they become problems. We take on the routine services that keep your property presentable and working.',
-    items: [{ t: 'Housekeeping & Cleaning', d: 'Regular cleaning programmes for common and working areas.' }, { t: 'Maintenance Coordination', d: 'Routine upkeep and repairs organised and followed through.' }, { t: 'Front-Desk & Reception', d: 'Welcoming, well-presented reception support.' }, { t: 'Facility Manpower', d: 'Reliable people for day-to-day facility needs.' }],
-    benefits: ['A cleaner, better-presented property', 'Repairs tracked until they are done', 'Fewer day-to-day operational interruptions', 'One team to call for facility needs'] },
-  { slug: 'industries-we-serve', title: 'Industries We Serve', kicker: 'Industries', lead: 'We work with commercial environments that need dependable protection and management.', img: 'retail', variant: 'industries', items: [{ t: 'Retail', d: 'Large-format and high-footfall stores.', img: 'retail' }, { t: 'Commercial', d: 'Shopping malls, multi-tenant and standalone commercial properties.', img: 'tower' }, { t: 'Corporate', d: 'Offices, campuses and corporate premises.', img: 'office' }, { t: 'Residential / Managed Environments', d: 'Managed properties that need orderly entry, upkeep and presence.', img: 'lobby' }] },
-  { slug: 'contact-us', title: 'Contact Us', kicker: 'Contact', lead: 'Tell us about your site and we will arrange a conversation.', img: 'cta', variant: 'contact', items: [] },
-  { slug: 'privacy-policy', title: 'Privacy Policy', kicker: 'Legal', lead: 'How we handle the information you share with us.', img: 'tower', variant: 'text', items: [{ t: 'Information we collect', d: 'Details you submit through enquiry forms, such as name, email, phone and message.' }, { t: 'How we use it', d: 'To respond to your enquiry and provide the services you ask for. We do not sell your information.' }, { t: 'Contact', d: 'For questions about your data, email us using the details on the contact page.' }] },
-  { slug: 'terms-and-conditions', title: 'Terms & Conditions', kicker: 'Legal', lead: 'The terms for using this website.', img: 'tower', variant: 'text', items: [{ t: 'Information on this site', d: 'Service descriptions are general. Scope and terms are agreed in writing for each engagement.' }, { t: 'No guarantees', d: 'Nothing on this site is a guarantee of outcomes or of the absence of incidents.' }, { t: 'Changes', d: 'We may update these terms from time to time.' }] },
+
+export type ProcessStep = {
+  step: string;
+  title: string;
+  description: string;
+};
+
+export const processSteps: ProcessStep[] = [
+  { step: '01', title: 'Understand Your Site', description: 'We assess your location, traffic patterns, and risk areas.' },
+  { step: '02', title: 'Plan the Coverage', description: 'Shifts, patrol routes, and access points are mapped to your needs.' },
+  { step: '03', title: 'Deploy', description: 'Trained personnel and systems are placed with site-specific briefings.' },
+  { step: '04', title: 'Review & Improve', description: 'We monitor performance and adjust coverage as your site evolves.' },
 ];
-export const getPage = (s: string) => PAGES.find((p) => p.slug === s);
+
+export type TrustItem = {
+  label: string;
+  description: string;
+};
+
+export const trustItems: TrustItem[] = [
+  { label: 'Security Personnel', description: 'Trained officers for site security and access control' },
+  { label: 'CCTV & Surveillance', description: 'Camera systems and monitoring for full site visibility' },
+  { label: 'Commercial Security', description: 'Coverage for retail, corporate, and commercial spaces' },
+  { label: 'Facility Services', description: 'Housekeeping, maintenance, and facility manpower' },
+  { label: 'Site-Specific Planning', description: 'Protocols built around your site layout and operations' },
+];
+
+export const heroImage = 'https://images.pexels.com/photos/35562107/pexels-photo-35562107.png?auto=compress&cs=tinysrgb&w=1920';
+export const heroAlt = 'Security guard in uniform standing alert at a building entrance';
+
+export const aboutImage = 'https://images.pexels.com/photos/27831371/pexels-photo-27831371.jpeg?auto=compress&cs=tinysrgb&w=1200';
+export const aboutAlt = 'Security officer in uniform ascending steps with professional bearing';
+export const aboutSecondaryImage = 'https://images.pexels.com/photos/1381765/pexels-photo-1381765.jpeg?auto=compress&cs=tinysrgb&w=800';
+export const aboutSecondaryAlt = 'Modern spacious indoor lobby with architectural design';
+
+export const ctaImage = 'https://images.pexels.com/photos/18441167/pexels-photo-18441167.jpeg?auto=compress&cs=tinysrgb&w=1920';
+export const ctaAlt = 'Aerial view of a city skyline at night with illuminated skyscrapers';
+
+export const securitySectionImage = 'https://images.pexels.com/photos/31282368/pexels-photo-31282368.jpeg?auto=compress&cs=tinysrgb&w=1200';
+export const securitySectionAlt = 'Security guard in uniform standing outdoors in an urban setting';
+
+export const cctvSectionImage = 'https://images.pexels.com/photos/30692441/pexels-photo-30692441.jpeg?auto=compress&cs=tinysrgb&w=1600';
+export const cctvSectionAlt = 'Security officer in a control room analyzing surveillance screens';
+export const cctvCameraImage = 'https://images.pexels.com/photos/5650141/pexels-photo-5650141.jpeg?auto=compress&cs=tinysrgb&w=800';
+export const cctvCameraAlt = 'Security camera attached to a post against a blue sky';
+
+export const commercialSectionImage = 'https://images.pexels.com/photos/35551656/pexels-photo-35551656.jpeg?auto=compress&cs=tinysrgb&w=1920';
+export const commercialSectionAlt = 'Modern shopping mall with architecture and escalators';
+
+export const facilitySectionImage = 'https://images.pexels.com/photos/36303748/pexels-photo-36303748.jpeg?auto=compress&cs=tinysrgb&w=1200';
+export const facilitySectionAlt = 'Clean industrial hallway with a cleaning cart and supplies';
+export const facilitySecondaryImage = 'https://images.pexels.com/photos/9068384/pexels-photo-9068384.jpeg?auto=compress&cs=tinysrgb&w=800';
+export const facilitySecondaryAlt = 'Contemporary office space with minimalist design';

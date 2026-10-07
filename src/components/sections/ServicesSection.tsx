@@ -1,0 +1,16 @@
+import Link from 'next/link';
+import { services } from '@/data/site';
+import Reveal from '@/components/Reveal';
+
+export default function ServicesSection() {
+  const featured = services[0];
+  return <section id="services" className="relative overflow-hidden bg-navy-900 py-24 md:py-32">
+    <div className="section-padding"><div className="container-wide">
+      <Reveal><div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end"><div className="max-w-3xl"><div className="mb-5 flex items-center gap-3"><span className="h-px w-8 bg-accent"/><span className="eyebrow-accent">What we do</span></div><h2 className="text-[clamp(2.7rem,5vw,5rem)] font-extrabold leading-[.95] tracking-[-.045em] text-white">One partner.<br/><span className="text-steel-500">Complete coverage.</span></h2></div><p className="max-w-md text-base leading-7 text-steel-400">From people on the ground to technology behind the scenes, our services are designed to work together — not in isolation.</p></div></Reveal>
+      <div className="mt-14 grid gap-4 lg:grid-cols-12 lg:grid-rows-2">
+        <Reveal className="lg:col-span-7 lg:row-span-2"><Link href={featured.href} className="group relative block h-[520px] overflow-hidden rounded-3xl border border-white/10 bg-navy-950 md:h-[610px]"><img src={featured.heroImage} alt={featured.heroAlt} className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"/><div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/55 to-transparent"/><div className="absolute inset-x-0 bottom-0 p-7 md:p-10"><div className="mb-3 text-[10px] font-bold uppercase tracking-[.25em] text-accent">01 · {featured.eyebrow}</div><h3 className="text-3xl font-extrabold tracking-[-.03em] text-white md:text-4xl">{featured.title}</h3><p className="mt-3 max-w-xl text-sm leading-6 text-bone-200/75 md:text-base">{featured.tagline}</p><span className="mt-6 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-[10px] font-bold uppercase tracking-[.18em] text-white">Explore service <b className="text-accent transition group-hover:translate-x-1">→</b></span></div></Link></Reveal>
+        {services.slice(1,5).map((service,i)=><Reveal key={service.slug} delay={i*80} className="lg:col-span-5"><Link href={service.href} className="group relative flex min-h-[250px] h-full overflow-hidden rounded-3xl border border-white/10 bg-navy-950"><img src={service.heroImage} alt={service.heroAlt} className="absolute inset-0 h-full w-full object-cover opacity-65 transition duration-700 group-hover:scale-105 group-hover:opacity-80"/><div className="absolute inset-0 bg-gradient-to-r from-navy-950/95 via-navy-950/70 to-navy-950/20"/><div className="relative z-10 flex w-full flex-col justify-end p-6 md:p-7"><span className="mb-2 text-[9px] font-bold uppercase tracking-[.22em] text-accent">0{i+2} · {service.eyebrow}</span><h3 className="text-xl font-bold text-white md:text-2xl">{service.shortTitle}</h3><p className="mt-2 max-w-sm text-xs leading-5 text-steel-300">{service.tagline}</p><span className="mt-4 text-[10px] font-bold uppercase tracking-[.18em] text-white">View details <span className="text-accent">→</span></span></div></Link></Reveal>)}
+      </div>
+    </div></div>
+  </section>;
+}

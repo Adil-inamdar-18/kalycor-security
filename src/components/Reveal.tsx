@@ -1,10 +1,43 @@
 'use client';
-import { motion } from 'framer-motion';
-import type { ReactNode } from 'react';
-const ease = [0.2, 0.7, 0.2, 1] as const;
-export function Reveal({ children, delay = 0, className }: { children: ReactNode; delay?: number; className?: string }) {
-  return <motion.div className={className} initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.8, delay, ease }}>{children}</motion.div>;
-}
-export function ImageReveal({ children, className }: { children: ReactNode; className?: string }) {
-  return <motion.div className={className} initial={{ clipPath: 'inset(0 0 100% 0)' }} whileInView={{ clipPath: 'inset(0 0 0% 0)' }} viewport={{ once: true, margin: '-60px' }} transition={{ duration: 1.1, ease: [0.7, 0, 0.2, 1] }}>{children}</motion.div>;
+
+import { useEffect, useRef } from 'react';
+
+type RevealProps = {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+  as?: 'div' | 'section' | 'article' | 'li' | 'span' | 'header' | 'footer';
+};
+
+export default function Reveal({ children, className = '', delay = 0, as = 'div' }: RevealProps) {
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).style.animationDelay = `${delay}ms`;
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [delay]);
+
+  const Tag = as as React.ElementType;
+
+  return (
+    <Tag ref={ref} className={`reveal ${className}`}>
+      {children}
+    </Tag>
+  );
 }
