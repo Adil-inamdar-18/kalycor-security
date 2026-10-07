@@ -1,3 +1,14 @@
-/** All imagery is served from /public/images, so no remote image hosts are needed. */
-const nextConfig = { images: { formats: ['image/avif', 'image/webp'] } };
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.pexels.com',
+      },
+    ],
+  },
+};
+
 export default nextConfig;

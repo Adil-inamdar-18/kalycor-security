@@ -1,20 +1,122 @@
 import Link from 'next/link';
-import { Linkedin, Instagram, Facebook } from 'lucide-react';
-import { BUSINESSES, SERVICES, SITE } from '@/data/site';
-const icons = { LinkedIn: Linkedin, Instagram, Facebook } as const;
-const h = 'mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-brass';
-const link = 'transition-colors hover:text-brass';
-export function Footer() {
-  const nav = [['Services', '/our-services'], ['Industries', '/industries-we-serve'], ['About', '/about-us'], ['Contact', '/contact-us']];
-  const short = ['Security', 'CCTV', 'Commercial', 'Facility'];
-  return (<footer className="bg-ink text-paper/70">
-    <div className="mx-auto grid max-w-7xl gap-12 px-5 py-20 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.2fr_1.3fr] lg:px-8">
-      <div><p className="font-serif text-3xl text-paper">Kalycor Services</p><p className="mt-4 max-w-xs text-sm leading-relaxed">Security, surveillance, commercial and facility services for retail, commercial buildings and corporate environments.</p>
-        <ul className="mt-6 flex gap-3">{SITE.social.map((s) => { const I = icons[s.label as keyof typeof icons]; return <li key={s.label}><a href={s.href} aria-label={s.label} className="grid h-10 w-10 place-items-center border border-paper/25 transition-colors hover:border-brass hover:text-brass"><I size={16} /></a></li>; })}</ul></div>
-      <div><p className={h}>Navigate</p><ul className="space-y-3 text-sm">{nav.map(([l, href]) => <li key={l}><Link href={href} className={link}>{l}</Link></li>)}</ul></div>
-      <div><p className={h}>Services</p><ul className="space-y-3 text-sm">{SERVICES.map((s, i) => <li key={s.slug}><Link href={`/${s.slug}`} className={link}>{short[i]}</Link></li>)}</ul></div>
-      <div><p className={h}>Our Businesses</p><ul className="space-y-3 text-sm">{BUSINESSES.map((b) => <li key={b.name}><a href={b.href} className={link}>{b.name}</a></li>)}</ul></div>
-      <div className="text-sm"><p className={h}>Contact</p><p>{SITE.phone}</p><p className="mt-3 break-all">{SITE.email}</p><p className="mt-3">{SITE.location}</p></div></div>
-    <div className="border-t border-paper/10 px-5 py-6 text-xs lg:px-8"><div className="mx-auto flex max-w-7xl flex-wrap justify-between gap-3"><p>© 2026 Kalycor. All rights reserved.</p>
-      <p className="flex gap-6"><Link href="/privacy-policy" className={link}>Privacy Policy</Link><Link href="/terms-and-conditions" className={link}>Terms &amp; Conditions</Link></p></div></div></footer>);
+import { siteConfig } from '@/data/site';
+
+export default function Footer() {
+  return (
+    <footer className="relative border-t border-navy-700/40 bg-navy-950 noise-overlay">
+      <div className="section-padding py-16 md:py-20">
+        <div className="container-wide">
+          {/* Top section */}
+          <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+            {/* Brand */}
+            <div className="lg:col-span-1">
+              <Link href="/" className="flex items-center gap-2.5" aria-label="Kalycor Services home">
+                <div className="flex h-9 w-9 items-center justify-center border border-accent/50">
+                  <svg viewBox="0 0 24 24" className="h-5 w-5 text-accent" fill="none" aria-hidden="true">
+                    <path d="M12 2L3 6v6c0 5 3.5 9 9 10 5.5-1 9-5 9-10V6l-9-4z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+                    <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <div className="flex flex-col leading-none">
+                  <span className="text-base font-bold tracking-tight text-bone-50">KALYCOR</span>
+                  <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-steel-400">Services</span>
+                </div>
+              </Link>
+              <p className="mt-5 max-w-xs text-sm leading-relaxed text-steel-400">
+                {siteConfig.description}
+              </p>
+              <div className="mt-6 flex gap-4">
+                {siteConfig.social.map((social) => (
+                  <Link
+                    key={social.label}
+                    href={social.href}
+                    className="text-xs uppercase tracking-wider text-steel-400 transition-colors hover:text-accent"
+                  >
+                    {social.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Services */}
+            <div>
+              <h4 className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Services</h4>
+              <ul className="space-y-3">
+                {siteConfig.footerLinks.services.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="text-sm text-steel-400 transition-colors hover:text-bone-50"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Industries */}
+            <div>
+              <h4 className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Industries</h4>
+              <ul className="space-y-3">
+                {siteConfig.footerLinks.industries.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="text-sm text-steel-400 transition-colors hover:text-bone-50"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Company */}
+            <div>
+              <h4 className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Company</h4>
+              <ul className="space-y-3">
+                {siteConfig.footerLinks.company.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="text-sm text-steel-400 transition-colors hover:text-bone-50"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+                <li>
+                  <Link
+                    href="/contact"
+                    className="link-underline text-sm text-steel-400 transition-colors hover:text-bone-50"
+                  >
+                    Request Assessment
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Bottom bar */}
+          <div className="mt-14 flex flex-col gap-4 border-t border-navy-700/40 pt-8 md:flex-row md:items-center md:justify-between">
+            <p className="text-xs text-steel-600">
+              © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
+            </p>
+            <div className="flex gap-6">
+              {siteConfig.footerLinks.legal.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="text-xs text-steel-600 transition-colors hover:text-steel-400"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
 }
