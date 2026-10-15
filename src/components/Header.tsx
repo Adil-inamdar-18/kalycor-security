@@ -36,28 +36,28 @@ export default function Header() {
       <div className="section-padding">
         <div className="container-wide flex items-center justify-between">
           <Link
-  href="/"
-  className="group flex items-center gap-3"
-  aria-label="Kalycor Security home"
->
-  <Image
-    src="/new-logo.png"
-    alt="Kalycor Security logo"
-    width={58}
-    height={58}
-    priority
-    className="h-20 w-20 object-contain transition-transform duration-300 group-hover:scale-105"
-  />
+            href="/"
+            className="group flex items-center gap-3"
+            aria-label="Kalycor Security home"
+          >
+            <Image
+              src="/images/new-logo.png"
+              alt="Kalycor Security logo"
+              width={58}
+              height={58}
+              priority
+              className="h-20 w-20 object-contain transition-transform duration-300 group-hover:scale-105"
+            />
 
-  <div className="leading-none">
-    <div className="text-[18px] font-bold tracking-[0.12em] text-white">
-      KALYCOR
-    </div>
-    <div className="mt-1 text-[9px] font-semibold tracking-[0.28em] text-gold-400">
-      SECURITY
-    </div>
-  </div>
-</Link>
+            <div className="leading-none">
+              <div className="text-[18px] font-bold tracking-[0.12em] text-white">
+                KALYCOR
+              </div>
+              <div className="mt-1 text-[9px] font-semibold tracking-[0.28em] text-gold-400">
+                SECURITY
+              </div>
+            </div>
+          </Link>
 
           <nav
             className="hidden items-center gap-1 lg:flex"
