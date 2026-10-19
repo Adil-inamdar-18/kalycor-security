@@ -7,9 +7,7 @@ export default function Footer() {
     <footer className="relative border-t border-navy-700/40 bg-navy-950 noise-overlay">
       <div className="section-padding py-16 md:py-20">
         <div className="container-wide">
-          {/* Top section */}
           <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-            {/* Brand */}
             <div className="lg:col-span-1">
               <Link
                 href="/"
@@ -51,7 +49,6 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Services */}
             <div>
               <h4 className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
                 Services
@@ -70,7 +67,6 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Industries */}
             <div>
               <h4 className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
                 Industries
@@ -89,7 +85,6 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Company */}
             <div>
               <h4 className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
                 Company
@@ -117,7 +112,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Bottom bar */}
           <div className="mt-14 flex flex-col gap-4 border-t border-navy-700/40 pt-8 md:flex-row md:items-center md:justify-between">
             <p className="text-xs text-steel-600">
               © {new Date().getFullYear()} {siteConfig.name}. All rights

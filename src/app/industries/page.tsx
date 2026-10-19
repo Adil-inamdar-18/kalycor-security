@@ -1,14 +1,13 @@
-import Link from 'next/link';
-import Reveal from '@/components/Reveal';
-import Breadcrumb from '@/components/Breadcrumb';
-import SectionHeading from '@/components/SectionHeading';
-import FinalCTA from '@/components/sections/FinalCTA';
-import { industries } from '@/data/site';
+import Link from "next/link";
+import Reveal from "@/components/Reveal";
+import Breadcrumb from "@/components/Breadcrumb";
+import SectionHeading from "@/components/SectionHeading";
+import FinalCTA from "@/components/sections/FinalCTA";
+import { industries } from "@/data/site";
 
 export default function IndustriesPage() {
   return (
     <>
-      {/* Hero */}
       <section className="relative min-h-[60vh] w-full overflow-hidden bg-navy-950">
         <div className="absolute inset-0 z-0">
           <img
@@ -23,7 +22,9 @@ export default function IndustriesPage() {
         <div className="relative z-10 flex min-h-[60vh] flex-col justify-end section-padding pb-16 pt-32">
           <div className="container-wide">
             <div className="mb-6">
-              <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Industries' }]} />
+              <Breadcrumb
+                items={[{ label: "Home", href: "/" }, { label: "Industries" }]}
+              />
             </div>
             <Reveal>
               <div className="mb-4 flex items-center gap-3">
@@ -38,14 +39,15 @@ export default function IndustriesPage() {
             </Reveal>
             <Reveal delay={200}>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-bone-200 md:text-lg">
-                From retail floors to industrial perimeters, our security and facility services adapt to the specific demands of each environment.
+                From retail floors to industrial perimeters, our security and
+                facility services adapt to the specific demands of each
+                environment.
               </p>
             </Reveal>
           </div>
         </div>
       </section>
 
-      {/* Industries grid */}
       <section className="bg-navy-950 noise-overlay">
         <div className="section-padding py-22 md:py-30">
           <div className="container-wide space-y-22">
@@ -54,11 +56,10 @@ export default function IndustriesPage() {
                 key={industry.id}
                 id={industry.id}
                 className={`grid gap-10 lg:gap-16 lg:grid-cols-2 items-center scroll-mt-24 ${
-                  i % 2 === 1 ? 'lg:grid-flow-dense' : ''
+                  i % 2 === 1 ? "lg:grid-flow-dense" : ""
                 }`}
               >
-                {/* Image */}
-                <Reveal className={i % 2 === 1 ? 'lg:col-start-2' : ''}>
+                <Reveal className={i % 2 === 1 ? "lg:col-start-2" : ""}>
                   <div className="relative overflow-hidden group">
                     <img
                       src={industry.image}
@@ -69,14 +70,16 @@ export default function IndustriesPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-navy-950/40 to-transparent" />
                     <div className="absolute top-4 left-4 flex items-center gap-2 bg-navy-950/80 px-3 py-2 backdrop-blur-sm">
                       <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-accent">
-                        {String(i + 1).padStart(2, '0')} / {String(industries.length).padStart(2, '0')}
+                        {String(i + 1).padStart(2, "0")} /{" "}
+                        {String(industries.length).padStart(2, "0")}
                       </span>
                     </div>
                   </div>
                 </Reveal>
 
-                {/* Content */}
-                <div className={i % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}>
+                <div
+                  className={i % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""}
+                >
                   <Reveal>
                     <div className="mb-4 flex items-center gap-3">
                       <span className="h-px w-8 bg-accent" />
@@ -99,8 +102,19 @@ export default function IndustriesPage() {
                       className="mt-6 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-bone-50 link-underline"
                     >
                       Enquire About This Industry
-                      <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                        <path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      <svg
+                        className="h-4 w-4"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M2 8h12M9 3l5 5-5 5"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
                       </svg>
                     </Link>
                   </Reveal>
