@@ -155,7 +155,7 @@ export default function Hero() {
         preload="auto"
         aria-hidden="true"
         tabIndex={-1}
-        className="absolute inset-0 -z-20 h-full w-full object-cover object-[72%_center] lg:left-auto lg:right-0 lg:w-[66%] lg:object-right lg:[-webkit-mask-image:linear-gradient(to_right,transparent,black_24%)] lg:[mask-image:linear-gradient(to_right,transparent,black_24%)]"
+        className="absolute inset-x-0 top-0 -z-20 h-[50%] w-full object-cover object-[72%_center] [-webkit-mask-image:linear-gradient(to_bottom,black_70%,transparent)] [mask-image:linear-gradient(to_bottom,black_70%,transparent)] lg:inset-y-0 lg:left-auto lg:right-0 lg:h-full lg:w-[66%] lg:object-right lg:[-webkit-mask-image:linear-gradient(to_right,transparent,black_24%)] lg:[mask-image:linear-gradient(to_right,transparent,black_24%)]"
       />
 
       <div
