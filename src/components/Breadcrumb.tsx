@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from "next/link";
 
 type BreadcrumbItem = {
   label: string;
@@ -20,7 +20,9 @@ export default function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
                 {item.label}
               </Link>
             ) : (
-              <span className={isLast ? 'text-accent' : 'text-steel-400'}>{item.label}</span>
+              <span className={isLast ? "text-accent" : "text-steel-400"}>
+                {item.label}
+              </span>
             )}
             {!isLast && (
               <span className="text-steel-600" aria-hidden="true">

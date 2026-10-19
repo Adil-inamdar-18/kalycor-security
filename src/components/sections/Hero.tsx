@@ -16,7 +16,13 @@ const capabilities = [
   { label: ["Integrated", "Solutions"], icon: "gear" },
 ] as const;
 
-function Icon({ name, className = "h-6 w-6" }: { name: string; className?: string }) {
+function Icon({
+  name,
+  className = "h-6 w-6",
+}: {
+  name: string;
+  className?: string;
+}) {
   const common = {
     viewBox: "0 0 24 24",
     fill: "none",
@@ -48,7 +54,15 @@ function Icon({ name, className = "h-6 w-6" }: { name: string; className?: strin
         <svg {...common}>
           <path d="M20.5 12a8.5 8.5 0 1 1-2.5-6" />
           <path d="M18.6 2.6v3.6h-3.6" />
-          <text x="12" y="14.6" textAnchor="middle" fontSize="6.4" fontWeight="700" fill="currentColor" stroke="none">
+          <text
+            x="12"
+            y="14.6"
+            textAnchor="middle"
+            fontSize="6.4"
+            fontWeight="700"
+            fill="currentColor"
+            stroke="none"
+          >
             247
           </text>
         </svg>
@@ -87,7 +101,16 @@ function Icon({ name, className = "h-6 w-6" }: { name: string; className?: strin
 
 function Arrow({ className = "h-4 w-4" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
       <path d="M5 12h14M13 6l6 6-6 6" />
     </svg>
   );
@@ -102,7 +125,6 @@ export default function Hero() {
     return () => window.clearTimeout(t);
   }, []);
 
-  // Keep the background video muted + playing; pause it for people who prefer reduced motion (poster stays visible)
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
@@ -122,7 +144,6 @@ export default function Hero() {
 
   return (
     <section className="relative isolate flex min-h-[100svh] items-center overflow-hidden bg-[#050c18] text-white lg:min-h-[clamp(680px,38.4vw,900px)]">
-      {/* Background: looping CCTV video. Full-bleed on mobile; on desktop it sits on the right so the copy stays clear of the "Live Monitoring" card */}
       <video
         ref={videoRef}
         src="/videos/cctv-live-hero.mp4"
@@ -136,23 +157,30 @@ export default function Hero() {
         tabIndex={-1}
         className="absolute inset-0 -z-20 h-full w-full object-cover object-[72%_center] lg:left-auto lg:right-0 lg:w-[66%] lg:object-right lg:[-webkit-mask-image:linear-gradient(to_right,transparent,black_24%)] lg:[mask-image:linear-gradient(to_right,transparent,black_24%)]"
       />
-      {/* Readability: heavy on small screens, light on desktop where the artwork is already dark on the left */}
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(5,12,24,.94)_0%,rgba(5,12,24,.82)_55%,rgba(5,12,24,.45)_100%)] lg:bg-[linear-gradient(90deg,rgba(5,12,24,.55)_0%,rgba(5,12,24,0)_46%)]" />
-      <div aria-hidden="true" className="absolute inset-x-0 bottom-0 -z-10 h-28 bg-gradient-to-t from-[#050c18] to-transparent" />
+
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(5,12,24,.94)_0%,rgba(5,12,24,.82)_55%,rgba(5,12,24,.45)_100%)] lg:bg-[linear-gradient(90deg,rgba(5,12,24,.55)_0%,rgba(5,12,24,0)_46%)]"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 bottom-0 -z-10 h-28 bg-gradient-to-t from-[#050c18] to-transparent"
+      />
 
       <div className="section-padding relative w-full pb-14 pt-32 lg:pb-10 lg:pt-28">
         <div className="container-wide">
           <div className="max-w-[min(100%,46rem)] lg:max-w-[48vw]">
-            {/* Eyebrow */}
             <div className={`mb-5 flex items-center gap-4 lg:mb-6 ${reveal()}`}>
               <span className="h-px w-12 bg-[#ff7a1a]" />
               <span className="text-[10px] font-semibold uppercase tracking-[.3em] text-slate-300 sm:text-xs">
-                24/7 Protection <span className="mx-1.5 text-slate-500">•</span> Smarter Surveillance
+                24/7 Protection <span className="mx-1.5 text-slate-500">•</span>{" "}
+                Smarter Surveillance
               </span>
             </div>
 
-            {/* Headline */}
-            <h1 className={`text-[clamp(2.6rem,4.4vw,5.1rem)] font-extrabold leading-[1.02] tracking-[-.025em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.35)] ${reveal("delay-100")}`}>
+            <h1
+              className={`text-[clamp(2.6rem,4.4vw,5.1rem)] font-extrabold leading-[1.02] tracking-[-.025em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.35)] ${reveal("delay-100")}`}
+            >
               Security that
               <br />
               keeps your
@@ -162,13 +190,17 @@ export default function Hero() {
               </span>
             </h1>
 
-            {/* Copy */}
-            <p className={`mt-6 max-w-[34rem] text-[15px] leading-[1.65] text-slate-300 sm:text-base lg:mt-7 lg:text-[clamp(.95rem,1.08vw,1.2rem)] ${reveal("delay-200")}`}>
-              Professional security personnel, CCTV and surveillance, commercial protection and facility support — coordinated around the way your site actually operates.
+            <p
+              className={`mt-6 max-w-[34rem] text-[15px] leading-[1.65] text-slate-300 sm:text-base lg:mt-7 lg:text-[clamp(.95rem,1.08vw,1.2rem)] ${reveal("delay-200")}`}
+            >
+              Professional security personnel, CCTV and surveillance, commercial
+              protection and facility support — coordinated around the way your
+              site actually operates.
             </p>
 
-            {/* Buttons */}
-            <div className={`mt-8 flex flex-col gap-3 sm:flex-row sm:items-center lg:mt-9 ${reveal("delay-300")}`}>
+            <div
+              className={`mt-8 flex flex-col gap-3 sm:flex-row sm:items-center lg:mt-9 ${reveal("delay-300")}`}
+            >
               <Link
                 href="/contact"
                 className="group inline-flex h-[3.25rem] items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[#ff7a1a] to-[#ff5a14] px-7 text-[11px] font-extrabold uppercase tracking-[.1em] text-[#07111f] shadow-[0_14px_38px_-10px_rgba(255,106,26,.65)] transition duration-300 hover:-translate-y-0.5 hover:brightness-110 sm:text-xs"
@@ -185,8 +217,9 @@ export default function Hero() {
               </Link>
             </div>
 
-            {/* Stats */}
-            <div className={`mt-9 flex flex-wrap items-center gap-y-5 lg:mt-10 ${reveal("delay-500")}`}>
+            <div
+              className={`mt-9 flex flex-wrap items-center gap-y-5 lg:mt-10 ${reveal("delay-500")}`}
+            >
               {stats.map((s, i) => (
                 <div
                   key={s.label}
@@ -196,8 +229,12 @@ export default function Hero() {
                     <Icon name={s.icon} className="h-9 w-9 lg:h-10 lg:w-10" />
                   </span>
                   <div>
-                    <div className="text-xl font-bold leading-none text-white lg:text-[1.35rem]">{s.value}</div>
-                    <div className="mt-1.5 text-[9px] font-medium uppercase tracking-[.16em] text-slate-400">{s.label}</div>
+                    <div className="text-xl font-bold leading-none text-white lg:text-[1.35rem]">
+                      {s.value}
+                    </div>
+                    <div className="mt-1.5 text-[9px] font-medium uppercase tracking-[.16em] text-slate-400">
+                      {s.label}
+                    </div>
                   </div>
                 </div>
               ))}
@@ -206,7 +243,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Capabilities list (desktop) */}
       <ul
         className={`absolute right-[2.4vw] top-[49%] z-10 hidden w-[12.5vw] min-w-[170px] max-w-[220px] lg:block ${reveal("delay-700")}`}
         aria-label="Capabilities"

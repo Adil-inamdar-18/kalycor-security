@@ -5,7 +5,6 @@ import { ctaImage, ctaAlt } from "@/data/site";
 export default function FinalCTA() {
   return (
     <section className="relative overflow-hidden border-t border-white/10 bg-navy-950">
-      {/* Background Video */}
       <video
         autoPlay
         muted
@@ -19,13 +18,10 @@ export default function FinalCTA() {
         <source src="/videos/cta-background.mp4" type="video/mp4" />
       </video>
 
-      {/* Dark Overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,17,31,.85),rgba(7,17,31,.55),rgba(7,17,31,.7))]" />
 
-      {/* Grid Overlay */}
       <div className="absolute inset-0 grid-overlay opacity-30" />
 
-      {/* Content */}
       <div className="relative section-padding py-24 md:py-32">
         <div className="container-wide">
           <Reveal>

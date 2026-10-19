@@ -1,21 +1,36 @@
-import Link from 'next/link';
-import Reveal from '@/components/Reveal';
-import { services, commercialSectionImage, commercialSectionAlt } from '@/data/site';
+import Link from "next/link";
+import Reveal from "@/components/Reveal";
+import {
+  services,
+  commercialSectionImage,
+  commercialSectionAlt,
+} from "@/data/site";
 
 export default function CommercialSection() {
-  const commercialService = services.find((s) => s.slug === 'commercial');
+  const commercialService = services.find((s) => s.slug === "commercial");
   if (!commercialService) return null;
 
   const environments = [
-    { label: 'Retail', image: 'https://images.pexels.com/photos/5539083/pexels-photo-5539083.jpeg?auto=compress&cs=tinysrgb&w=800' },
-    { label: 'Shopping Centres', image: commercialSectionImage },
-    { label: 'Commercial Buildings', image: 'https://images.pexels.com/photos/17079096/pexels-photo-17079096.jpeg?auto=compress&cs=tinysrgb&w=800' },
-    { label: 'Corporate Spaces', image: 'https://images.pexels.com/photos/518244/pexels-photo-518244.jpeg?auto=compress&cs=tinysrgb&w=800' },
+    {
+      label: "Retail",
+      image:
+        "https://images.pexels.com/photos/5539083/pexels-photo-5539083.jpeg?auto=compress&cs=tinysrgb&w=800",
+    },
+    { label: "Shopping Centres", image: commercialSectionImage },
+    {
+      label: "Commercial Buildings",
+      image:
+        "https://images.pexels.com/photos/17079096/pexels-photo-17079096.jpeg?auto=compress&cs=tinysrgb&w=800",
+    },
+    {
+      label: "Corporate Spaces",
+      image:
+        "https://images.pexels.com/photos/518244/pexels-photo-518244.jpeg?auto=compress&cs=tinysrgb&w=800",
+    },
   ];
 
   return (
     <section className="relative w-full overflow-hidden bg-navy-950">
-      {/* Full-width cinematic background */}
       <div className="absolute inset-0 z-0">
         <img
           src={commercialSectionImage}
@@ -46,11 +61,13 @@ export default function CommercialSection() {
             </p>
           </Reveal>
 
-          {/* Environment strip */}
           <div className="mt-14 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
             {environments.map((env, i) => (
               <Reveal key={env.label} delay={i * 100}>
-                <Link href={commercialService.href} className="group block relative overflow-hidden">
+                <Link
+                  href={commercialService.href}
+                  className="group block relative overflow-hidden"
+                >
                   <div className="relative h-48 overflow-hidden md:h-64">
                     <img
                       src={env.image}
@@ -65,9 +82,22 @@ export default function CommercialSection() {
                       {env.label}
                     </h3>
                     <div className="mt-2 flex items-center gap-1.5 text-xs text-accent opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                      <span className="uppercase tracking-wider">Learn More</span>
-                      <svg className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                        <path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      <span className="uppercase tracking-wider">
+                        Learn More
+                      </span>
+                      <svg
+                        className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M2 8h12M9 3l5 5-5 5"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
                       </svg>
                     </div>
                   </div>
@@ -82,8 +112,19 @@ export default function CommercialSection() {
               className="mt-10 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-bone-50 link-underline"
             >
               Explore Commercial Services
-              <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <svg
+                className="h-4 w-4"
+                viewBox="0 0 16 16"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M2 8h12M9 3l5 5-5 5"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
             </Link>
           </Reveal>
